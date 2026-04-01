@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dify Chatflow 网页封装</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="topbar">
+        <div class="brand">
+          <div class="brand__title">Dify Chatflow 网页封装</div>
+          <div class="brand__sub">两个角色分开会话，浏览器不暴露 API Key</div>
+        </div>
+        <div class="role-tabs" role="tablist" aria-label="角色切换">
+          <button class="tab tab--active" data-role="a" role="tab" aria-selected="true">埃尔文</button>
+          <button class="tab" data-role="b" role="tab" aria-selected="false">一只猪</button>
+        </div>
+      </header>
+
+      <main class="main">
+        <section class="panel">
+          <div class="panel__meta">
+            <div class="meta-row">
+              <div class="pill">当前角色：<span id="currentRoleLabel">埃尔文</span></div>
+              <div class="pill">conversation_id：<span id="conversationId">（未开始）</span></div>
+            </div>
+            <div class="meta-row">
+              <label class="field">
+                <span class="field__label">user_name</span>
+                <input id="userNameInput" class="field__input" placeholder="可选：不填则自动使用 web-user" />
+              </label>
+              <label class="field">
+                <span class="field__label">mission</span>
+                <input id="missionInput" class="field__input" placeholder="必填：按你的 Chatflow 表单要求填写" />
+              </label>
+            </div>
+            <div class="meta-row">
+              <button class="ghost" id="clearChatBtn" type="button">清空本地聊天记录</button>
+              <button class="ghost" id="newConversationBtn" type="button">新建会话（清空 conversation_id）</button>
+            </div>
+          </div>
+
+          <div class="chat" id="chat"></div>
+
+          <form class="composer" id="composer">
+            <textarea
+              id="input"
+              placeholder="输入消息，Enter 发送，Shift+Enter 换行"
+              rows="2"
+              autocomplete="off"
+            ></textarea>
+            <button class="primary" id="sendBtn" type="submit">发送</button>
+          </form>
+          <div class="hint" id="hint"></div>
+        </section>
+      </main>
+    </div>
+
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>
+
